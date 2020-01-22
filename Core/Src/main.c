@@ -99,8 +99,7 @@ int _read(int file, char *result, size_t len) {
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-  setvbuf(stdin, NULL, _IONBF, 0);
+  /* USER CODE BEGIN 1 */  setvbuf(stdin, NULL, _IONBF, 0);
 
   /* USER CODE END 1 */
   

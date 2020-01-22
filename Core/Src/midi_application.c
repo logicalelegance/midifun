@@ -9,7 +9,6 @@
  */
 
 #define DEBUG_MIDI_TX
-
 #include "midi_application.h"
 
 void MIDI_Application_Process(void)
