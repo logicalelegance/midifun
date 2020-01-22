@@ -119,7 +119,7 @@ void ConsoleInit(UART_HandleTypeDef *uart) {
 // Call ConsoleProcess from a loop, it will handle commands as they become available
 void ConsoleProcess(void) {
 	const sConsoleCommandTable_T *commandTable;
-	uint32_t received;
+	uint32_t received = 0;
 	uint32_t cmdIndex;
 	int32_t cmdEndline;
 	int32_t found;

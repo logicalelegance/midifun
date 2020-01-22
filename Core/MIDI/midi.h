@@ -6,9 +6,14 @@
  * cwhite@logicalelegance.com
  */
 
+#define MIDI_BUFFER_SIZE 1024
+
 typedef enum {
 	MIDI_OK,
+	MIDI_NOT_READY,
 	MIDI_TIMEOUT,
+	MIDI_RX_OVERFLOW,
+	MIDI_RX_ERROR,
 	MIDI_INVALID_PARAM,
 } MIDI_error_t;
 
@@ -27,6 +32,7 @@ static inline uint8_t midi_compose_first_byte(uint8_t channel, uint8_t command) 
 }
 
 MIDI_error_t MIDI_Init(UART_HandleTypeDef *in_uart, UART_HandleTypeDef *out_uart);
+MIDI_error_t MIDI_Send_RawBytes(uint8_t *data, uint16_t num_data_bytes);
 MIDI_error_t MIDI_Send_RawChannelMsg(uint8_t command,
                           uint8_t channel,
                           uint8_t num_data_bytes,
@@ -35,6 +41,11 @@ MIDI_error_t MIDI_Send_NoteOnMsg(uint8_t channel, uint8_t note, uint8_t vel);
 MIDI_error_t MIDI_Send_NoteOffMsg(uint8_t channel, uint8_t note);
 MIDI_error_t MIDI_Send_CCMsg(uint8_t channel, uint8_t control, uint8_t val);
 MIDI_error_t MIDI_Send_AllNotesOffMsg(uint8_t channel);
+
+MIDI_error_t MIDI_Interrupt_Receive(void);
+MIDI_error_t MIDI_Dequeue_Receive(uint8_t *bytes, uint16_t *len);
+MIDI_error_t MIDI_Interrupt_Receive_Begin(void);
+
 
 
 

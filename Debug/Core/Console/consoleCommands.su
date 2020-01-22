@@ -1,0 +1,7 @@
+consoleCommands.c:36:25:ConsoleCommandComment	16	static
+consoleCommands.c:42:25:ConsoleCommandHelp	32	static
+consoleCommands.c:62:25:ConsoleCommandMidiNoteOn	24	static
+consoleCommands.c:73:25:ConsoleCommandMidiAllNotesOff	16	static
+consoleCommands.c:81:25:ConsoleCommandMidiTestSequence	32	static
+consoleCommands.c:111:25:ConsoleCommandVer	24	static
+consoleCommands.c:121:31:ConsoleCommandsGetTable	4	static

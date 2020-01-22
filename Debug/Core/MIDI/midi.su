@@ -1,0 +1,11 @@
+midi.h:30:23:midi_compose_first_byte	16	static
+midi.c:28:14:MIDI_Init	16	static
+midi.c:47:14:MIDI_Send_RawBytes	24	static
+midi.c:60:14:MIDI_Send_RawChannelMsg	24	static
+midi.c:88:14:MIDI_Send_NoteOnMsg	24	static
+midi.c:98:14:MIDI_Send_NoteOffMsg	24	static
+midi.c:107:14:MIDI_Send_CCMsg	24	static
+midi.c:116:14:MIDI_Send_AllNotesOffMsg	16	static
+midi.c:125:14:MIDI_Interrupt_Receive_Begin	8	static
+midi.c:130:14:MIDI_Interrupt_Receive	16	static
+midi.c:144:14:MIDI_Dequeue_Receive	24	static

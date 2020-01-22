@@ -90,6 +90,7 @@ int _read(int file, char *result, size_t len) {
     return( retcode);
 }
 
+
 /* USER CODE END 0 */
 
 /**
@@ -137,11 +138,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   ConsoleInit(&huart3);
+  MIDI_Interrupt_Receive_Begin();
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	MIDI_Application_Process();
 	ConsoleProcess();
   }
   /* USER CODE END 3 */
@@ -421,7 +424,18 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+/**
+  * @brief Rx Transfer completed callbacks
+  * @param huart: uart handle
+  * @retval None
+  */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(huart);
+  MIDI_Interrupt_Receive();
+  MIDI_Interrupt_Receive_Begin();
+}
 /* USER CODE END 4 */
 
 /**

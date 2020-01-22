@@ -74,11 +74,8 @@ static eCommandResult_T ConsoleCommandMidiAllNotesOff(const char buffer[]) {
 	uint16_t noteVal;
 	eCommandResult_T result;
 
-	result = ConsoleReceiveParamHexUint16(buffer, 1, &noteVal);
-	if (COMMAND_SUCCESS == result) {
-		MIDI_Send_AllNotesOffMsg(1);
-	}
-	return result;
+	MIDI_Send_AllNotesOffMsg(1);
+	return COMMAND_SUCCESS;
 }
 
 static eCommandResult_T ConsoleCommandMidiTestSequence(const char buffer[]) {

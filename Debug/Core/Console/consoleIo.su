@@ -1,0 +1,5 @@
+consoleIo.c:15:23:getch_noblock	16	static
+consoleIo.c:25:15:ConsoleIoInit	16	static
+consoleIo.c:31:15:ConsoleIoReceive	40	static
+consoleIo.c:49:15:ConsoleIoSend	24	static
+consoleIo.c:56:15:ConsoleIoSendString	16	static

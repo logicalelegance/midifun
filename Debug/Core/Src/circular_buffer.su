@@ -1,0 +1,4 @@
+circular_buffer.c:14:36:buffer_is_valid	16	static
+circular_buffer.c:22:22:circularBuffer_get_length	16	static
+circular_buffer.c:31:22:circularBuffer_write_bytes	32	static
+circular_buffer.c:49:22:circularBuffer_read_bytes	32	static
