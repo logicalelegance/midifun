@@ -49,7 +49,7 @@ MIDI_error_t MIDI_Interrupt_Receive_Begin(void);
 
 MIDI_error_t MIDI_Enqueue_Send(uint8_t *bytes, uint16_t *len);
 MIDI_error_t MIDI_Interrupt_Transmit_Begin(void);
-
+MIDI_error_t MIDI_Interrupt_Receive_Begin(void);
 
 
 

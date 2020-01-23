@@ -19,6 +19,10 @@ void MIDI_Application_Process(void)
 
 	// Just emulate MIDI through for now
 	do {
+		if (!MIDI_Interrupt_Is_Armed()) {
+			MIDI_Interrupt_Receive_Begin();
+		}
+
 		status = MIDI_Dequeue_Receive(&next_byte, &bytes_to_read);
 		if (status == MIDI_OK) {
 			status = MIDI_Enqueue_Send(&next_byte, &bytes_to_read);

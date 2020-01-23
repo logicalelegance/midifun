@@ -25,8 +25,9 @@ static uint8_t midi_tx_data_buf[MIDI_BUFFER_SIZE];
 static struct {
 	bool    inited;
 	bool    last_tx_complete;
+	bool    last_rx_arm_failed;
 	uint8_t last_status;
-} state = { false, 0 };
+} state = { false, false, 0 };
 
 static struct {
 	uint16_t tx_waits;
@@ -137,9 +138,15 @@ MIDI_error_t MIDI_Send_AllNotesOffMsg(uint8_t channel)
 	return(MIDI_Send_CCMsg(channel, AllNotesOff, 0));
 }
 
+
 /*
  * MIDI Reception APIs
  */
+bool MIDI_Interrupt_Is_Armed(void)
+{
+	return !state.last_rx_arm_failed;
+}
+
 
 MIDI_error_t MIDI_Interrupt_Receive_Begin(void)
 {
@@ -147,7 +154,10 @@ MIDI_error_t MIDI_Interrupt_Receive_Begin(void)
 	if (halStatus != HAL_OK) {
 		stats.hal_errors++;
 		stats.last_hal_error = halStatus;
+		state.last_rx_arm_failed = true;
+		return MIDI_RX_ERROR;
 	}
+	state.last_rx_arm_failed = false;
 	return MIDI_OK;
 }
 
