@@ -14,6 +14,7 @@ typedef enum {
 	MIDI_TIMEOUT,
 	MIDI_RX_OVERFLOW,
 	MIDI_RX_ERROR,
+	MIDI_TX_ERROR,
 	MIDI_INVALID_PARAM,
 } MIDI_error_t;
 
@@ -45,6 +46,9 @@ MIDI_error_t MIDI_Send_AllNotesOffMsg(uint8_t channel);
 MIDI_error_t MIDI_Interrupt_Receive(void);
 MIDI_error_t MIDI_Dequeue_Receive(uint8_t *bytes, uint16_t *len);
 MIDI_error_t MIDI_Interrupt_Receive_Begin(void);
+
+MIDI_error_t MIDI_Enqueue_Send(uint8_t *bytes, uint16_t *len);
+MIDI_error_t MIDI_Interrupt_Transmit_Begin(void);
 
 
 

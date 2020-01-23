@@ -39,7 +39,7 @@ eCircularBufferError circularBuffer_write_bytes(circular_buffer_t *cb, uint8_t *
 		}
 
 		memcpy(&cb->data[cb->write_pos], data, len);
-		cb->write_pos = (cb->write_pos + 1) & (cb->size - len); // Atomic?
+		cb->write_pos = (cb->write_pos + len) & (cb->size - len); // Atomic?
 		return eCircularBufferOk;
 	} else {
 		return status;
@@ -60,7 +60,7 @@ eCircularBufferError circularBuffer_read_bytes(circular_buffer_t *cb, uint8_t *d
 			*read_len = curr_length;
 		}
 		memcpy(data, &cb->data[cb->read_pos], *read_len);
-		cb->read_pos = (cb->read_pos + 1) & (cb->size - *read_len);
+		cb->read_pos = (cb->read_pos + *read_len) & (cb->size - *read_len);
 		return eCircularBufferOk;
 	} else {
 		return status;

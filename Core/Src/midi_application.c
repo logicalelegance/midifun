@@ -8,7 +8,7 @@
  * Chris White
  */
 
-#define DEBUG_MIDI_TX
+//#define DEBUG_MIDI_TX
 #include "midi_application.h"
 
 void MIDI_Application_Process(void)
@@ -21,7 +21,7 @@ void MIDI_Application_Process(void)
 	do {
 		status = MIDI_Dequeue_Receive(&next_byte, &bytes_to_read);
 		if (status == MIDI_OK) {
-			status = MIDI_Send_RawBytes(&next_byte, 1);
+			status = MIDI_Enqueue_Send(&next_byte, &bytes_to_read);
 #ifdef DEBUG_MIDI_TX
 			printf("Sent: %x\r\n", next_byte);
 #endif

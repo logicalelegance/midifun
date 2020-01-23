@@ -35,7 +35,6 @@ eConsoleError ConsoleIoReceive(uint8_t *buffer, const uint32_t bufferLength,
 	getch_status_t status = GOT_CHAR;
 
 	if (getch_noblock(&ch) == GOT_CHAR) {
-		HAL_UART_Transmit(con_uart, (uint8_t*) &ch, 1, 11);
 		while ((status == GOT_CHAR) && (i < bufferLength)) {
 			buffer[i] = (uint8_t) ch;
 			i++;

@@ -435,6 +435,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   MIDI_Interrupt_Receive();
   MIDI_Interrupt_Receive_Begin();
 }
+
+/**
+  * @brief Tx Transfer completed callbacks
+  * @param huart: uart handle
+  * @retval None
+  */
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(huart);
+  MIDI_Interrupt_Transmit_End();
+}
+
+/*
+ *
+ */
+HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+	UNUSED(huart);
+	MIDI_Log_Error();
+}
+
 /* USER CODE END 4 */
 
 /**

@@ -103,7 +103,7 @@ void ConsoleInit(UART_HandleTypeDef *uart) {
 
 	ConsoleIoInit(uart);
 	ConsoleIoSendString(
-			"Welcome to the Consolinator, your gateway to testing code and hardware.");
+			"MIDI Thingy");
 	ConsoleIoSendString(STR_ENDLINE);
 	ConsoleIoSendString(CONSOLE_PROMPT);
 	mReceivedSoFar = 0u;
@@ -130,10 +130,10 @@ void ConsoleProcess(void) {
 	if (received > 0u) {
 		mReceivedSoFar += received;
 		cmdEndline = ConsoleCommandEndline(mReceiveBuffer, mReceivedSoFar);
-		if (cmdEndline >= 0)  // have complete string, find command
-				{
+		if (cmdEndline >= 0) {  // have complete string, find command
+
 			// Print a line feed.
-			printf("\n");
+			printf("\n\r");
 
 			commandTable = ConsoleCommandsGetTable();
 			cmdIndex = 0u;

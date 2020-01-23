@@ -21,6 +21,7 @@ static eCommandResult_T ConsoleCommandHelp(const char buffer[]);
 static eCommandResult_T ConsoleCommandMidiNoteOn(const char buffer[]);
 static eCommandResult_T ConsoleCommandMidiAllNotesOff(const char buffer[]);
 static eCommandResult_T ConsoleCommandMidiTestSequence(const char buffer[]);
+static eCommandResult_T ConsoleCommandMidiStats(const char buffer[]);
 
 static const sConsoleCommandTable_T mConsoleCommandTable[] = {
 		{ ";", &ConsoleCommandComment, HELP(
@@ -30,6 +31,7 @@ static const sConsoleCommandTable_T mConsoleCommandTable[] = {
 		{ "MidiNoteOn", &ConsoleCommandMidiNoteOn, HELP("Play note with value") },
 		{ "MidiAllNotesOff", &ConsoleCommandMidiAllNotesOff, HELP("Turn off all notes") },
 		{ "MidiTestSeq", &ConsoleCommandMidiTestSequence, HELP("Play a test sequence of notes") },
+		{ "midistats", &ConsoleCommandMidiStats, HELP("Get MIDI tx/rx stats") },
 		CONSOLE_COMMAND_TABLE_END // must be LAST
 		};
 
@@ -57,6 +59,10 @@ static eCommandResult_T ConsoleCommandHelp(const char buffer[]) {
 		ConsoleIoSendString(STR_ENDLINE);
 	}
 	return result;
+}
+
+static eCommandResult_T ConsoleCommandMidiStats(const char buffer[]) {
+	MIDI_Print_Stats();
 }
 
 static eCommandResult_T ConsoleCommandMidiNoteOn(const char buffer[]) {
