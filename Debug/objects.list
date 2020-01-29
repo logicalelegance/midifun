@@ -1,3 +1,4 @@
+"Core/Audio/audio.o"
 "Core/Console/console.o"
 "Core/Console/consoleCommands.o"
 "Core/Console/consoleIo.o"
@@ -21,6 +22,8 @@
 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o"
 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o"
 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o"
+"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2s.o"
+"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2s_ex.o"
 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pcd.o"
 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pcd_ex.o"
 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o"
